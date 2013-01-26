@@ -4,8 +4,6 @@ set encoding=utf-8
 call pathogen#infect()
 filetype plugin indent on
 
-runtime macros/matchit.vim  " enables % to cycle through `if/else/endif`
-
 syntax enable
 set background=dark
 let g:solarized_termcolors=256
@@ -88,27 +86,6 @@ let mapleader=","
 " paste lines from unnamed register and fix indentation
 nmap <leader>p pV`]=
 nmap <leader>P PV`]=
-
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT features<cr>
-map <leader>gg :topleft 100 :split Gemfile<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-" http://vimcasts.org/e/14
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-
-let g:CommandTMaxHeight=10
-let g:CommandTMinHeight=4
-
-" In command-line mode, C-a jumps to beginning (to match C-e)
-cnoremap <C-a> <Home>
-
-" ignore Rubinius, Sass cache files
-set wildignore+=tmp/**,*.rbc,.rbx,*.scssc,*.sassc
 
 nnoremap <leader><leader> <c-^>
 
