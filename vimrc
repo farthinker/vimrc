@@ -1,13 +1,15 @@
 set nocompatible
 set encoding=utf-8
 
+let g:pathogen_disabled = ['rails', 'ruby']
 call pathogen#infect()
 filetype plugin indent on
 
 syntax enable
 set background=dark
-let g:solarized_termcolors=256
+"let g:solarized_termcolors=256
 colorscheme solarized
+let mapleader=","
 
 set number      " line numbers are needed
 set ruler       " show the cursor position all the time
@@ -25,20 +27,22 @@ set autoread
 
 "" Whitespace
 set nowrap                        " don't wrap lines
-set tabstop=4                     " a tab is two spaces
+set noexpandtab
+set tabstop=4
 set softtabstop=4
 set shiftwidth=4                  " an autoindent (with <<) is two spaces
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
 
 " List chars
-set listchars=""                  " Reset the listchars
-set listchars=tab:\ \             " a tab should display as "  ", trailing whitespace as "."
-set listchars+=trail:.            " show trailing spaces as dots
-set listchars+=extends:>          " The character to show in the last column when wrap is
-                                  " off and the line continues beyond the right of the screen
-set listchars+=precedes:<         " The character to show in the first column when wrap is
-                                  " off and the line continues beyond the left of the screen
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+set listchars+=trail:.
+set listchars+=extends:>
+set listchars+=precedes:<
+highlight NonText guifg=#063a48
+highlight SpecialKey guifg=#063a48 guibg=#002b36
+
 "" Searching
 set hlsearch                      " highlight matches
 set incsearch                     " incremental searching
@@ -71,8 +75,8 @@ if has("autocmd")
 
   " mark Jekyll YAML frontmatter as comment
   au BufNewFile,BufRead *.{md,markdown,html,xml} sy match Comment /\%^---\_.\{-}---$/
-  
-  au BufNewFile,BufRead *.{rb,py,yml} setlocal softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+
+  "au BufNewFile,BufRead *.{rb,py,yml,vim} setlocal softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 endif
 
 " clear the search buffer when hitting return
@@ -80,8 +84,6 @@ endif
 
 " toggle the current fold
 :nnoremap <Space> za
-
-let mapleader=","
 
 " paste lines from unnamed register and fix indentation
 nmap <leader>p pV`]=

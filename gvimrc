@@ -11,4 +11,8 @@ set guioptions-=r   " No scrollbars
 if has("gui_macvim")
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
+
+  macmenu &File.New\ Tab key=<nop>
+  map <D-t> :CtrlP<CR>
+  map <D-r> :CtrlPMRU<CR>
 end
