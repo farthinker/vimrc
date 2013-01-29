@@ -17,6 +17,8 @@ set showcmd
 set history=200
 set scrolloff=3
 set autoread
+set autoindent
+set smartindent
 
 " Whitespace
 set nowrap
@@ -43,24 +45,22 @@ set ignorecase                    " searches are case insensitive...
 set smartcase                     " ... unless they contain at least one capital letter
 
 if has("autocmd")
+  " New File Type
+  au BufNewFile,BufRead *.json,*.js.erb set ft=javascript
+  au BufNewFile,BufRead *.css.erb set ft=css
+  au BufNewFile,BufRead *.css.scss set ft=scss
+
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
-
-  " Treat JSON files like JavaScript
-  au BufNewFile,BufRead *.json set ft=javascript
-
-  " make Python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+  au FileType python set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+  au FileType ruby,yaml set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
+  au FileType vim set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 
   " Remember last location in file, but not for commit messages.
   " see :help last-position-jump
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g`\"" | endif
 
-  " mark Jekyll YAML frontmatter as comment
-  au BufNewFile,BufRead *.{md,markdown,html,xml} sy match Comment /\%^---\_.\{-}---$/
-
-  "au BufNewFile,BufRead *.{rb,py,yml,vim} setlocal softtabstop=2 tabstop=2 shiftwidth=2 expandtab
 endif
 
 " clear the search buffer when hitting return
