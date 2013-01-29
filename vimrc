@@ -10,24 +10,22 @@ set background=dark
 colorscheme solarized
 let mapleader=","
 
-set number      " line numbers are needed
-set ruler       " show the cursor position all the time
-set cursorline  " highlight the line of the cursor
-set showcmd     " show partial commands below the status line
-set history=200 " remember more Ex commands
-set scrolloff=3 " have some context around the current line always on screen
-
-" Auto-reload buffers when file changed on disk
+set number
+set ruler
+set cursorline
+set showcmd
+set history=200
+set scrolloff=3
 set autoread
 
 " Whitespace
-set nowrap                        " don't wrap lines
+set nowrap
 set noexpandtab
 set tabstop=4
 set softtabstop=4
-set shiftwidth=4                  " an autoindent (with <<) is two spaces
-set list                          " Show invisible characters
-set backspace=indent,eol,start    " backspace through everything in insert mode
+set shiftwidth=4
+set list
+set backspace=indent,eol,start
 
 " List chars
 nmap <leader>l :set list!<CR>
@@ -70,6 +68,9 @@ endif
 
 set splitright
 set splitbelow
+
+" Plugin Mappings
+nmap <leader>d :NERDTreeToggle<CR>
 
 if has("statusline") && !&cp
   set laststatus=2  " always show the status bar
