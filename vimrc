@@ -17,14 +17,10 @@ set showcmd     " show partial commands below the status line
 set history=200 " remember more Ex commands
 set scrolloff=3 " have some context around the current line always on screen
 
-" Allow backgrounding buffers without writing them, and remember marks/undo
-" for backgrounded buffers
-set hidden
-
 " Auto-reload buffers when file changed on disk
 set autoread
 
-"" Whitespace
+" Whitespace
 set nowrap                        " don't wrap lines
 set noexpandtab
 set tabstop=4
@@ -42,24 +38,15 @@ set listchars+=precedes:<
 highlight NonText guifg=#063a48
 highlight SpecialKey guifg=#063a48 guibg=#002b36
 
-"" Searching
+" Searching
 set hlsearch                      " highlight matches
 set incsearch                     " incremental searching
 set ignorecase                    " searches are case insensitive...
 set smartcase                     " ... unless they contain at least one capital letter
 
-function s:setupWrapping()
-  set wrap
-  set wrapmargin=2
-  set textwidth=80
-endfunction
-
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
-
-  " Make sure all markdown files have the correct filetype set and setup wrapping
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown | call s:setupWrapping()
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
@@ -81,34 +68,8 @@ endif
 " clear the search buffer when hitting return
 :nnoremap <CR> :nohlsearch<cr>
 
-" toggle the current fold
-:nnoremap <Space> za
-
-" paste lines from unnamed register and fix indentation
-nmap <leader>p pV`]=
-nmap <leader>P PV`]=
-
-nnoremap <leader><leader> <c-^>
-
-" find merge conflict markers
-nmap <silent> <leader>cf <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-
-command! KillWhitespace :normal :%s/ *$//g<cr><c-o><cr>
-
 set splitright
 set splitbelow
-
-" easier navigation between split windows
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" disable cursor keys in normal mode
-map <Left>  :echo "no!"<cr>
-map <Right> :echo "no!"<cr>
-map <Up>    :echo "no!"<cr>
-map <Down>  :echo "no!"<cr>
 
 if has("statusline") && !&cp
   set laststatus=2  " always show the status bar
