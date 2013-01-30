@@ -44,6 +44,25 @@ set incsearch                     " incremental searching
 set ignorecase                    " searches are case insensitive...
 set smartcase                     " ... unless they contain at least one capital letter
 
+" Move Line
+nnoremap <A-j> :m+<CR>==
+nnoremap <A-k> :m-2<CR>==
+inoremap <A-j> <Esc>:m+<CR>==gi
+inoremap <A-k> <Esc>:m-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
+" Shortcuts
+nnoremap <D-t> :CtrlP<CR>
+inoremap <D-t> <Esc>:CtrlP<CR>
+nnoremap <D-r> :CtrlPMRU<CR>
+inoremap <D-r> :CtrlPMRU<CR>
+nnoremap <D-CR> o
+inoremap <D-CR> <End><CR>
+nnoremap <D-;> i<End>;<CR>
+inoremap <D-;> <End>;<CR>
+
+
 if has("autocmd")
   " New File Type
   au BufNewFile,BufRead *.json,*.js.erb set ft=javascript
@@ -52,6 +71,7 @@ if has("autocmd")
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
+  au FileType javascript set softtabstop=4 tabstop=4 shiftwidth=4 noexpandtab
   au FileType python set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
   au FileType ruby,yaml set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
   au FileType vim set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
@@ -64,7 +84,7 @@ if has("autocmd")
 endif
 
 " clear the search buffer when hitting return
-:nnoremap <CR> :nohlsearch<cr>
+nnoremap <CR> :nohlsearch<cr>
 
 set splitright
 set splitbelow

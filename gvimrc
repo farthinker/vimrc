@@ -9,10 +9,12 @@ set guioptions-=T   " No toolbar
 set guioptions-=r   " No scrollbars
 
 if has("gui_macvim")
+  set invmacmeta  
+
   " Fullscreen takes up entire screen
   set fuoptions=maxhorz,maxvert
 
   macmenu &File.New\ Tab key=<nop>
-  map <D-t> :CtrlP<CR>
-  map <D-r> :CtrlPMRU<CR>
+  macmenu &Tools.Spelling.To\ Next\ error key=<nop>
+
 end
