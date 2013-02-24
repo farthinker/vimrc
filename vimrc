@@ -10,6 +10,7 @@ set background=dark
 colorscheme solarized
 let mapleader=","
 
+set hidden
 set number
 set ruler
 set cursorline
@@ -52,22 +53,30 @@ inoremap <A-k> <Esc>:m-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
 
-" Shortcuts
+" CtrlP
+let g:ctrlp_map = '<c-t>'
 nnoremap <D-t> :CtrlP<CR>
 inoremap <D-t> <Esc>:CtrlP<CR>
 nnoremap <D-r> :CtrlPMRU<CR>
 inoremap <D-r> :CtrlPMRU<CR>
+
+" End Return
 nnoremap <D-CR> o
 inoremap <D-CR> <End><CR>
-nnoremap <D-;> i<End>;<CR>
-inoremap <D-;> <End>;<CR>
+nnoremap <D-;> i<End>;
+inoremap <D-;> <End>;
+
+" Other Shortcuts
+nnoremap <CR> :nohlsearch<CR>
+nnoremap <leader>d :NERDTreeToggle<CR>
 
 
 if has("autocmd")
   " New File Type
-  au BufNewFile,BufRead *.json,*.js.erb set ft=javascript
+  au BufNewFile,BufRead *.json,*.js.erb set ft=js
   au BufNewFile,BufRead *.css.erb set ft=css
   au BufNewFile,BufRead *.css.scss set ft=scss
+  au BufNewFile,BufRead *.html.erb set ft=html
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
@@ -83,14 +92,8 @@ if has("autocmd")
 
 endif
 
-" clear the search buffer when hitting return
-nnoremap <CR> :nohlsearch<cr>
-
 set splitright
 set splitbelow
-
-" Plugin Mappings
-nmap <leader>d :NERDTreeToggle<CR>
 
 if has("statusline") && !&cp
   set laststatus=2  " always show the status bar
