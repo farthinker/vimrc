@@ -1,3 +1,5 @@
+runtime bundle/pathogen/autoload/pathogen.vim
+
 set nocompatible
 set encoding=utf-8
 
@@ -73,7 +75,7 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 
 if has("autocmd")
   " New File Type
-  au BufNewFile,BufRead *.json,*.js.erb set ft=js
+  au BufNewFile,BufRead *.json,*.js.erb set ft=javascript
   au BufNewFile,BufRead *.css.erb set ft=css
   au BufNewFile,BufRead *.css.scss set ft=scss
   au BufNewFile,BufRead *.html.erb set ft=html
