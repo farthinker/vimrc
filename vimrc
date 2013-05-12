@@ -82,7 +82,7 @@ if has("autocmd")
 
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make set noexpandtab
-  au FileType javascript set softtabstop=4 tabstop=4 shiftwidth=4 noexpandtab
+  au FileType javascript set softtabstop=2 tabstop=2 shiftwidth=2 noexpandtab
   au FileType scss,css set softtabstop=4 tabstop=4 shiftwidth=4 noexpandtab
   au FileType html set softtabstop=4 tabstop=4 shiftwidth=4 noexpandtab
   au FileType python set softtabstop=2 tabstop=2 shiftwidth=2 expandtab
