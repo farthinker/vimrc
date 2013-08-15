@@ -94,6 +94,15 @@ if has("autocmd")
   au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g`\"" | endif
 
+  " Auto compile less file
+  function LessToCss()
+    let current_file = shellescape(expand('%:p'))
+    let filename = shellescape(expand('%:r'))
+    let command = "silent !lessc " . current_file . " " . filename . ".css"
+    execute command
+  endfunction
+  autocmd BufWritePost,FileWritePost *.less call LessToCss()
+
 endif
 
 set splitright
