@@ -2,6 +2,7 @@ runtime bundle/pathogen/autoload/pathogen.vim
 
 set nocompatible
 set encoding=utf-8
+set noswapfile
 
 let g:pathogen_disabled = ['rails', 'ruby']
 call pathogen#infect()
