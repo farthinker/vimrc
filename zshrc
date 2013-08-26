@@ -37,7 +37,10 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Android\ Studio.app/sdk/tools:/Applications/Android\ Studio.app/sdk/platform-tools
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Android\ ADT/sdk/tools:/Applications/Android\ ADT/sdk/platform-tools
 
 # android
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+
+# rbenv
+eval "$(rbenv init -)"
